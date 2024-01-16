@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WHAT DO I PICK</title>
+
+  <!-- load papa parse -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <select name="character">
+      <option v-for="character in characters" :id="character">{{ character.name }}</option>
+    </select>
+    <select name="character">
+      <option v-for="character in characters" :id="character">{{ character.name }}</option>
+    </select>
+    <select name="character">
+      <option v-for="character in characters" :id="character">{{ character.name }}</option>
+    </select>
+    <select name="character">
+      <option v-for="character in characters" :id="character">{{ character.name }}</option>
+    </select>
+  </div>
+
+  <!-- load Vue2 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
