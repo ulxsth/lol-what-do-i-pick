@@ -7,9 +7,8 @@ const app = new Vue({
   },
   watch: {
     selected: {
-      handler: function (newVal) {
-        console.log(newVal)
-        this.selectLane(newVal[newVal.length - 1]);
+      handler: function () {
+        this.updateSelectedLane()
       },
       deep: true
     }
@@ -27,32 +26,34 @@ const app = new Vue({
       console.log(character)
       return character
     },
-    selectLane(name) {
-      const character = this.find(name)
-      if (!character) {
-        console.error('Character not found')
-        return
-      }
+    updateSelectedLane() {
+      this.selectedLanes = []
+      this.characters.forEach(character => {
+        if (!this.isLaneSelected(character.lane1)) {
+          this.selectedLanes.push(character.lane1)
+          return
+        }
 
-      if (!this.isLaneSelected(character.lane1)) {
+        if (this.lane2 && !this.isLaneSelected(character.lane2)) {
+          this.selectedLanes.push(character.lane2)
+          return
+        }
+
+        if (this.lane3 && !this.isLaneSelected(character.lane3)) {
+          this.selectedLanes.push(character.lane3)
+          return
+        }
+
         this.selectedLanes.push(character.lane1)
-        return
-      }
-
-      if (this.lane2 && !this.isLaneSelected(character.lane2)) {
-        this.selectedLanes.push(character.lane2)
-        return
-      }
-
-      if (this.lane3 && !this.isLaneSelected(character.lane3)) {
-        this.selectedLanes.push(character.lane3)
-        return
-      }
-
-      this.selectedLanes.push(character.lane1)
+      });
     },
     isLaneSelected(lane) {
       return this.selectedLanes.includes(lane);
+    },
+
+    reset() {
+      this.selected = []
+      this.selectedLanes = []
     }
   },
 })

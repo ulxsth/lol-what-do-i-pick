@@ -12,6 +12,7 @@
 
 <body>
   <div id="app">
+    <button @click="reset">RESET</button>
     <select name="character" v-model="selected[0]">
       <option v-for="character in characters" :id="character">{{ character.name }}</option>
     </select>
