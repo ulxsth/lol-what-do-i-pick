@@ -12,18 +12,28 @@
 
 <body>
   <div id="app">
-    <select name="character">
+    <select name="character" v-model="selected[0]">
       <option v-for="character in characters" :id="character">{{ character.name }}</option>
     </select>
-    <select name="character">
+    <select name="character" v-model="selected[1]">
       <option v-for="character in characters" :id="character">{{ character.name }}</option>
     </select>
-    <select name="character">
+    <select name="character" v-model="selected[2]">
       <option v-for="character in characters" :id="character">{{ character.name }}</option>
     </select>
-    <select name="character">
+    <select name="character" v-model="selected[3]">
       <option v-for="character in characters" :id="character">{{ character.name }}</option>
     </select>
+
+    <h2>Selected Character</h2>
+    <ul>
+      <li v-for="character in selected">{{ character }}</li>
+    </ul>
+
+    <h2>Selected Lanes</h2>
+    <ul>
+      <li v-for="lane in selectedLanes">{{ lane }}</li>
+    </ul>
   </div>
 
   <!-- load Vue2 -->
